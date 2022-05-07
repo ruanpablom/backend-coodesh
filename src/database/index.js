@@ -3,11 +3,19 @@ import mongoose from 'mongoose'
 
 class Database {
   constructor () {
-    this.mongo()
+    this.connectMongo()
   }
 
-  mongo () {
+  async connectMongo () {
     this.mongoConnection = mongoose.connect(process.env.MONGO_URI)
+  }
+
+  closeConnection () {
+    mongoose.connection.close()
+  }
+
+  dropCollection () {
+    mongoose.connection.dropCollection('articles')
   }
 }
 
