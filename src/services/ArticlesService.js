@@ -2,6 +2,15 @@ import '../database'
 import Article from '../schemas/article'
 
 class ArticleService {
+  async list (page) {
+    try {
+      return await Article.find().skip((page * 10) - 10).sort({ id: 1 }).limit(10)
+    } catch (error) {
+      console.log(error)
+      throw error
+    }
+  }
+
   async insertArticles (articles) {
     try {
       let previousArticlesQtd = articles.length
