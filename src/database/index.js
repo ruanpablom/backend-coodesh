@@ -7,15 +7,15 @@ class Database {
   }
 
   async connectMongo () {
-    this.mongoConnection = mongoose.connect(process.env.MONGO_URI)
+    mongoose.connect(process.env.MONGO_URI)
   }
 
   closeConnection () {
     mongoose.connection.close()
   }
 
-  dropCollection () {
-    mongoose.connection.dropCollection('articles')
+  dropCollection (collection) {
+    mongoose.connection.dropCollection(collection)
   }
 }
 
