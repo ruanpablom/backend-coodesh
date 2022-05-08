@@ -9,4 +9,6 @@ routes.get('/', (req, res) => {
 
 routes.get('/articles', ArticlesController.index)
 
+routes.get('/article/:id', ArticlesController.show)
+
 export default routes
