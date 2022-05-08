@@ -1,5 +1,5 @@
 import db from '../src/database'
-import { insertArticles } from '../src/services/ArticlesService'
+import ArticlesService from '../src/services/ArticlesService'
 import SpaceFlightService from '../src/services/SpaceFlightService'
 
 export const popucalteDb = async () => {
@@ -7,7 +7,7 @@ export const popucalteDb = async () => {
     db.dropCollection('articles')
     console.log('Adding articles...')
     const { data: allArticles } = await SpaceFlightService.allArticles()
-    const data = await insertArticles(allArticles)
+    const data = await ArticlesService.insertArticles(allArticles)
     db.closeConnection()
     return data
   } catch (error) {
